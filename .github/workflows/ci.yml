@@ -1,5 +1,4 @@
 name: ci
-# NOT RUN in the environment where this repository was prepared; verify the first run after publishing.
 on:
   push:
     branches: [main]

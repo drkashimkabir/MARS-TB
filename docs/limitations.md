@@ -10,8 +10,9 @@
 4. Zone boundaries, graph edges, frequency-band geometry, ablation wiring, text-prompt encoding and the NLL
    variant are implementation choices (`known_discrepancies.md`).
 5. **Not exercised:** multi-GPU training (no multi-GPU hardware), CUDA/AMP paths (the Python environment used
-   had a CPU-only PyTorch build although an RTX 3050 6 GB was present), the Docker image, and the GitHub
-   Actions workflows. The code paths exist; they are untested here.
+   had a CPU-only PyTorch build although an RTX 3050 6 GB was present), and the Docker image. The code paths exist; they are untested here.
+   GitHub Actions (Linux, CPU, Python 3.10-3.12) ran green on commit `96c08ef`: lint, format, mypy, 264+ tests,
+   coverage gate, the full-size test, gitleaks, pip-audit, bandit.
 6. Near-duplicate detection uses 64-bit perceptual hashes. Chest radiographs are structurally similar, so a
    single-hash match is only a *candidate*; only two-hash agreement or an exact match fails an audit. A clean
    audit does not prove patient-level separation.

@@ -1,5 +1,4 @@
 name: security
-# NOT RUN in the environment where this repository was prepared. Never bypass secret scanning or push protection.
 on:
   push:
     branches: [main]

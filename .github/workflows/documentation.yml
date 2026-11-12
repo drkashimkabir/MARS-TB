@@ -1,5 +1,4 @@
 name: documentation
-# NOT RUN in the environment where this repository was prepared.
 on:
   push:
     branches: [main]

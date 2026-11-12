@@ -32,8 +32,12 @@ records to resolve.
 * Numerical parity of the backbone with timm's ViT; DeLong against the O(n^2) definition; AUC/AP against
   scikit-learn; Clopper-Pearson against `scipy.stats.binomtest`.
 
+## CI
+GitHub Actions (`ci`, `security`, `documentation`) ran on Linux/CPU, Python 3.10-3.12, green on commit `96c08ef`.
+Getting there exposed three real portability bugs (numpy 2 `trapz`, Python 3.10 typing, a missing dev dependency).
+
 ## Not verified / not exercised
-CUDA and AMP training, multi-GPU (`torchrun`), the Dockerfile, the GitHub Actions workflows, loading of any
+CUDA and AMP training, multi-GPU (`torchrun`), the Dockerfile, loading of any
 BioViL-T/CXR-BERT weights, real TBX11K/PadChest/TB Portals data, DICOM from real scanners.
 
 ## Why the published numbers cannot currently be regenerated
