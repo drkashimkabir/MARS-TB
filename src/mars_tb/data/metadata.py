@@ -36,8 +36,7 @@ def load_schema(name: str) -> dict[str, Any]:
 
 
 def _records(df: pd.DataFrame) -> list[dict[str, Any]]:
-    clean = df.astype(object).where(pd.notna(df), None)
-    return clean.to_dict(orient="records")
+    return [{str(k): (None if pd.isna(v) else v) for k, v in rec.items()} for rec in df.to_dict(orient="records")]
 
 
 def validate_rows(df: pd.DataFrame, schema_name: str, max_errors: int = 20) -> list[str]:

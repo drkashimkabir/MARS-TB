@@ -37,7 +37,7 @@ def dhash(img_u8: np.ndarray) -> int:
 def phash(img_u8: np.ndarray) -> int:
     small = cv2.resize(img_u8, (32, 32), interpolation=cv2.INTER_AREA).astype(np.float32)
     dct = cv2.dct(small)[:8, :8].flatten()
-    med = np.median(dct[1:])  # exclude the DC term
+    med = float(np.median(np.asarray(dct[1:], dtype=np.float64)))  # exclude the DC term
     bits = dct > med
     return int("".join("1" if b else "0" for b in bits), 2)
 

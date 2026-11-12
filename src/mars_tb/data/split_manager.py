@@ -70,8 +70,8 @@ def generate_split(
     assigned = np.empty(len(df), dtype=object)
 
     if group_column is None:
-        for _, idx in df.groupby(strata, sort=True).groups.items():
-            idx = np.array(sorted(idx))
+        for _, members in df.groupby(strata, sort=True).groups.items():
+            idx = np.array(sorted(members))
             rng.shuffle(idx)
             a, b, _c = _allocate(len(idx), ratios)
             assigned[idx[:a]] = "train"
