@@ -86,12 +86,12 @@ def generate_split(
         members_of = df.groupby(group_column).indices
         sizes = np.array([len(members_of[g]) for g in group_ids])
         for stratum in sorted(set(group_stratum)):
-            members = np.where(group_stratum == stratum)[0]
-            members = members[rng.permutation(len(members))]
-            total = int(sizes[members].sum())
+            pick = np.where(group_stratum == stratum)[0]
+            pick = pick[rng.permutation(len(pick))]
+            total = int(sizes[pick].sum())
             target = np.array(_allocate(total, ratios), dtype=float)
             got = np.zeros(3)
-            for m in members:
+            for m in pick:
                 k = int(np.argmax(target - got))
                 got[k] += sizes[m]
                 assigned[members_of[group_ids[m]]] = SPLITS[k]

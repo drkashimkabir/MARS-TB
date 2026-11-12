@@ -33,7 +33,7 @@ def test_auc_and_ap_match_scikit_learn(ties):
 def test_roc_curve_matches_scikit_learn_area():
     y, s = _data()
     fpr, tpr, _ = roc_curve(y, s)
-    assert np.trapz(tpr, fpr) == pytest.approx(skm.roc_auc_score(y, s), abs=1e-12)
+    assert (getattr(np, "trapezoid", None) or np.trapz)(tpr, fpr) == pytest.approx(skm.roc_auc_score(y, s), abs=1e-12)
 
 
 def test_auc_edge_cases():
