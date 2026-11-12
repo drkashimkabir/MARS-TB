@@ -1,0 +1,6 @@
+dataset: padchest_tb
+source: https://bimcv.cipf.es/bimcv-projects/padchest/   # PadChest, Hospital Universitario San Juan de Alicante
+expected_counts: {images: 3000, positive: 891, negative: 2109}   # manuscript; NOT verified
+selection_rules: undocumented   # manuscript: "metadata fields, extraction rules ... not fully documented"
+negative_definition: radiologically-normal report label (NOT microbiological exclusion of TB)
+role: external_evaluation_only

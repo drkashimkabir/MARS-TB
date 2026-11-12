@@ -1,0 +1,3 @@
+image_id,split,label_binary,diagnostic_category,path
+example_h0001,train,0,healthy,imgs/example_h0001.png
+example_tb0001,val,1,active_tb,imgs/example_tb0001.png

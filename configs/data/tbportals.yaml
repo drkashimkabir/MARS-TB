@@ -1,0 +1,6 @@
+dataset: tb_portals
+source: https://tbportals.niaid.nih.gov/   # requires a NIAID data-use agreement; API access March 2025 per manuscript
+expected_counts: {images: 2800, positive: 1847, negative: 953}   # manuscript; NOT verified
+negative_source: UNKNOWN   # manuscript: source and diagnostic reference standard of the negatives not established
+manifest_requirement: "every negative image must carry an explicit provenance string or the preparation script refuses to run"
+role: external_evaluation_only

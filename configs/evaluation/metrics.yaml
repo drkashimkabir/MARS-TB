@@ -1,0 +1,9 @@
+metrics: [roc_auc, pr_auc, accuracy, sensitivity, specificity, ppv, npv, precision, recall, f1, mcc]
+confidence_intervals:
+  auc: delong
+  proportions: clopper_pearson
+  bootstrap: {n_boot: 2000, seed: 0, cluster_by: patient_id_if_available}
+comparison: {test: paired_delong, correction: holm, alpha: 0.05}
+threshold:
+  method: youden            # selected on the VALIDATION split only, then frozen
+  min_sensitivity: 0.9      # for the sensitivity-constrained alternative

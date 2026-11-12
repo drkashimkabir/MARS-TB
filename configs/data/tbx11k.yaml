@@ -1,0 +1,18 @@
+dataset: tbx11k
+source: https://www.kaggle.com/datasets/usmanshams/tbx-11   # study-specific Kaggle copy named in the manuscript
+original_repository: https://github.com/yun-liu/Tuberculosis
+expected_counts:            # manuscript Table 1 (revised); NOT verified against the data
+  eligible: 11190
+  excluded_uncertain: 10
+  positive: 1190
+  negative: 10000
+split:
+  ratios: [0.6, 0.2, 0.2]
+  note: "exact historical assignment files unavailable; newly generated splits only"
+labels:
+  binary:
+    positive: [active_tb, latent_tb, active_and_latent_tb]
+    negative: [healthy, sick_non_tb]
+    excluded: [uncertain_tb]
+  patient_ids: unavailable   # TBX11K documents no patient identifiers
+  auxiliary: unavailable     # pattern / severity labels were never documented; never invented

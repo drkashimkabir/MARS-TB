@@ -1,0 +1,9 @@
+# "BioViL-T + LoRA" baseline as described in the manuscript: ViT backbone + LoRA + linear heads,
+# none of the MARS-TB modules. The backbone is the manuscript's ViT-B/16, NOT the official
+# ResNet-50-hybrid BioViL-T image encoder (known_discrepancies.md, discrepancy I).
+backbone: {img_size: 512, pretrained: none}
+lora: {enabled: true}
+use_ddfm: false
+use_agrn: false
+use_prm: false
+head: {type: softmax_ce}

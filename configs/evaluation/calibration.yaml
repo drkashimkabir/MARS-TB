@@ -1,0 +1,3 @@
+n_bins: 15
+temperature_scaling: {fit_on: val, never_fit_on: [test, external]}
+uncertainty: {error_detection: true, risk_coverage: true, coverages: [1.0, 0.9, 0.8, 0.7]}

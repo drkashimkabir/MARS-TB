@@ -1,0 +1,12 @@
+# Lower bounds only. For the exact versions of a run see environment.json written by scripts/train.py.
+torch>=2.1
+torchvision>=0.16
+numpy>=1.24,<2
+scipy>=1.10
+pandas>=2.0
+opencv-python-headless>=4.8,<4.12
+pillow>=10.0
+pyyaml>=6.0
+jsonschema>=4.17
+matplotlib>=3.7
+pydicom>=2.4

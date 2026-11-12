@@ -1,0 +1,15 @@
+# Overrides are layered on mars_tb.yaml. The single source of truth is
+# mars_tb.models.ablations.ABLATIONS; tests/test_config.py checks this file lists the same names.
+ablations:
+  - full
+  - A6a_no_ddfm
+  - A6b_no_agrn
+  - A6c_no_prm
+  - A6d_ce_head
+  - A6e_full_finetune
+  - stage_backbone_lora_only
+  - stage_plus_ddfm
+  - stage_plus_ddfm_agrn
+not_implemented:
+  - A1_resnet50_baseline                      # use the separate baseline models
+  - A2_biovil_t_pretraining_configuration     # undefined in the manuscript

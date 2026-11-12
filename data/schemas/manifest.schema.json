@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MARS-TB dataset manifest row",
+  "description": "One row per radiograph. Paths are relative to a dataset root and must not escape it. No patient-identifying fields are permitted: patient_id must be a pseudonymous key.",
+  "type": "object",
+  "required": ["dataset", "image_id", "path", "label_binary", "label_provenance"],
+  "properties": {
+    "dataset": {"enum": ["tbx11k", "padchest_tb", "tb_portals", "synthetic_fixture"]},
+    "split": {"enum": ["train", "val", "test", "external"]},
+    "image_id": {"type": "string", "minLength": 1},
+    "path": {"type": "string", "pattern": "^(?![A-Za-z]:)(?![/\\\\])(?!.*\\.\\.).+$"},
+    "patient_id": {"type": ["string", "null"]},
+    "label_binary": {"enum": [0, 1]},
+    "diagnostic_category": {"type": ["string", "null"]},
+    "pattern_label": {"enum": ["cavitary", "infiltrative", "miliary", "pleural", "", null]},
+    "severity_label": {"enum": ["none", "mild", "moderate", "severe", "", null]},
+    "label_provenance": {
+      "type": "string",
+      "description": "Where the binary label came from, e.g. 'filename_prefix', 'dataset_annotation_json', 'report_label', 'microbiology', 'synthetic'."
+    },
+    "site": {"type": ["string", "null"]},
+    "source": {"type": ["string", "null"]},
+    "device": {"type": ["string", "null"]},
+    "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$|^$"}
+  },
+  "additionalProperties": true
+}

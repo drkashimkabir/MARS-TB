@@ -1,0 +1,3 @@
+# Seeds named in the manuscript (Section 3.3). Seed-level results in the manuscript are NOT
+# verified observations; running these seeds is how they would be produced.
+seeds: [42, 0, 1, 2, 3]

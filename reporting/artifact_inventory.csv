@@ -1,0 +1,24 @@
+artifact,category,status,path,sha256,source_or_reason,checked
+Original MARS-TB training code,Verified original research artifact,unavailable,,,"Not supplied; none found in the manuscript PDFs or the repository inputs",2026-11-12
+Original trained MARS-TB checkpoint(s),Verified original research artifact,unavailable,,,"Not supplied; none found",2026-11-12
+Original exact TBX11K split manifests,Verified original research artifact,unavailable,,,"Not supplied; manuscript cites Supplementary Table S1 for category allocations but the supplied S1 is the parameter table",2026-11-12
+Original model-generated prediction files,Verified original research artifact,unavailable,,,"Not supplied; Supplementary Table S6 prints 10 records of unknown provenance (see audit C23)",2026-11-12
+Original run logs / seed-level results,Verified original research artifact,unavailable,,,"Table 8 values cannot be tied to logs (audit C20-C21)",2026-11-12
+TBX11K images and labels,Verified source-dataset artifact,not_verified,,,"Public via the sources in docs/data_provenance.md; not redistributed and not inspected here",2026-11-12
+PadChest-TB selection manifest,Unavailable or unverified,unavailable,,,"Selection rules undocumented in the manuscript",2026-11-12
+TB Portals cohort manifest,Unavailable or unverified,unavailable,,,"Requires NIAID agreement; negative-image source unknown",2026-11-12
+Auxiliary pattern/severity labels,Unavailable or unverified,unavailable,,,"Generation procedure undocumented; never invented",2026-11-12
+MARS-TB reference implementation (src/mars_tb),Manuscript-derived implementation,available,src/mars_tb/models/mars_tb.py,,"Implemented from the manuscript; tests in tests/",2026-11-12
+Anatomical graph specification,Manuscript-derived implementation,available,src/mars_tb/resources/anatomical_graph.yaml,,"Boxes/edges are proposals; provenance tag per edge",2026-11-12
+Split generator and verifier,Manuscript-derived implementation,available,src/mars_tb/data/split_manager.py,,"Produces newly generated splits only",2026-11-12
+Leakage audit,Manuscript-derived implementation,available,src/mars_tb/data/leakage_audit.py,,"Exact + two-hash near-duplicate detection",2026-11-12
+Manuscript consistency audit,Independently reproduced result,available,reporting/manuscript_consistency_audit.md,,"Recomputed from the transcription in reporting/manuscript_reported_values.json",2026-11-12
+Parameter accounting vs Supp. Table 1,Independently reproduced result,available,docs/parameter_accounting.md,,"Counted by instantiating the default model",2026-11-12
+CPU efficiency measurement,Independently reproduced result,available,reporting/measured/benchmark_cpu_default_config.json,,"CPU only; not comparable with the A100 latency",2026-11-12
+CLAIM 2024 checklist,Manuscript-derived implementation,available,reporting/CLAIM_2024_checklist.csv,,"Preparers' assessment; authors must review",2026-11-12
+TRIPOD+AI checklist,Manuscript-derived implementation,available,reporting/TRIPOD_AI_2024_checklist.csv,,"Preparers' assessment; authors must review",2026-11-12
+Synthetic CI fixture,Test fixture or demonstration,available,src/mars_tb/testing/synthetic.py,,"Synthetic images; never a clinical experiment",2026-11-12
+Newly trained MARS-TB checkpoint,Independently reproduced result,unavailable,,,"Not trained: no TBX11K images and no CUDA-enabled PyTorch in the build environment",2026-11-12
+Reproduced evaluation metrics on real data,Independently reproduced result,unavailable,,,"Requires a trained checkpoint and the datasets",2026-11-12
+CheXNet baseline,Unavailable or unverified,not_implemented,,,"Needs ChestX-ray14-pretrained CheXNet weights",2026-11-12
+TBNet baseline,Unavailable or unverified,not_implemented,,,"No authoritative public implementation located",2026-11-12

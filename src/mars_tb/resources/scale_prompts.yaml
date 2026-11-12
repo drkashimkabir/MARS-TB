@@ -1,0 +1,17 @@
+# Scale-specific text prompts named in manuscript Figure 2 / Section 2.4.2.
+# These are the *phrases*; the manuscript does not give the exact prompt strings fed to the
+# text encoder (e.g. templates or sentence wrapping). Wording below is the figure's wording.
+# These prompts are FIXED text, not patient reports, so inference needs no clinical report.
+scale1_fine:
+  - cavitation
+  - miliary nodule
+  - apical infiltrate
+  - pleural effusion
+scale2_lobe:
+  - upper lobe consolidation
+  - lobe infiltrate
+  - hilar nodes
+scale3_whole_lung:
+  - bilateral disease
+  - normal lung field
+  - unilateral opacity

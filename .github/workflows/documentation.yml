@@ -1,0 +1,30 @@
+name: documentation
+# NOT RUN in the environment where this repository was prepared.
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**", "reporting/**", "README.md", "scripts/audit_manuscript.py", "src/mars_tb/audit.py"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          pip install --index-url https://download.pytorch.org/whl/cpu torch torchvision
+          pip install -e .
+      - name: Generated documents are current
+        run: |
+          python scripts/audit_manuscript.py --allow-fail
+          python scripts/parameter_accounting.py
+          python reporting/build_checklists.py
+          git diff --exit-code reporting docs
+      - name: Links, checklists, inventory
+        run: python scripts/validate_artifacts.py

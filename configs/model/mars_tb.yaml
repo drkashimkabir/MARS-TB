@@ -1,0 +1,42 @@
+# MARS-TB, main-text architecture (manuscript Sections 2.3-2.4). Values that the manuscript does
+# not fix are marked IMPLEMENTATION CHOICE and are documented in docs/known_discrepancies.md.
+backbone:
+  img_size: 512          # manuscript
+  patch_size: 16         # manuscript
+  dim: 768               # manuscript
+  depth: 12              # manuscript
+  heads: 12              # manuscript
+  layers: [4, 8, 12]     # manuscript: intermediate representations
+  freeze_backbone: true  # manuscript: pretrained weights frozen, LoRA only
+  pretrained: none       # IMPLEMENTATION CHOICE: random init; official BioViL-T is NOT a ViT-B/16
+lora:
+  enabled: true
+  rank: 16               # manuscript
+  alpha: 32              # manuscript (scale = 2.0)
+  dropout: 0.1           # manuscript
+  targets: [q, v]        # manuscript
+  init_std: 0.01         # manuscript: A ~ N(0, 0.01^2), B = 0
+text:
+  source: learned        # IMPLEMENTATION CHOICE; use `file` with precomputed CXR-BERT embeddings
+msvle:
+  attn_dim: 128          # Supplementary Table 1 (proj_dim = 128, 8 heads)
+  heads: 8
+  pool_kernels: [2, 4]   # 1024 -> 256 -> 64 tokens
+ddfm:
+  band_edges: [16, 64]   # manuscript; index geometry is an IMPLEMENTATION CHOICE
+  geometry: radial
+  band_input: ifft
+  kv_mode: band_tokens   # IMPLEMENTATION CHOICE: literal Eq. 8 is degenerate (see discrepancy J)
+agrn:
+  graph_spec: builtin    # node boxes + edges are IMPLEMENTATION PROPOSALS
+  heads: 8
+  hidden: 512
+  layers: 3
+prm:
+  use_gelu: false        # main text has no GELU; Supplementary Table 1 does
+  residual: false
+head:
+  type: evidential
+use_ddfm: true
+use_agrn: true
+use_prm: true

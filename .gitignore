@@ -1,0 +1,61 @@
+# secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+secrets/
+credentials*
+*.token
+# raw / licensed / clinical data
+data/raw/
+data/interim/
+data/processed/
+*.dcm
+*.dicom
+*.nii
+*.nii.gz
+# model artifacts (publish through verified releases only)
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.onnx
+*.pkl
+*.npz
+*.h5
+checkpoints/*
+!checkpoints/README.md
+# runs and generated results
+runs/
+outputs/
+wandb/
+results/tables/*
+results/figures/*
+results/metrics/*
+!results/tables/.gitkeep
+!results/figures/.gitkeep
+!results/metrics/.gitkeep
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+# editors / os
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.tmp

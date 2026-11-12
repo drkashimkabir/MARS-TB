@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MARS-TB prediction export row",
+  "description": "Rows are produced only by running a model; the exporter never fills unavailable values. alpha_* and uncertainty are null for non-evidential (softmax) models.",
+  "type": "object",
+  "required": [
+    "dataset", "split", "image_id", "patient_id", "model", "seed", "actual_label",
+    "p_tb", "predicted_label", "threshold", "uncertainty", "alpha_negative", "alpha_positive",
+    "checkpoint_hash"
+  ],
+  "properties": {
+    "dataset": {"type": "string", "minLength": 1},
+    "split": {"enum": ["train", "val", "test", "external"]},
+    "image_id": {"type": "string", "minLength": 1},
+    "patient_id": {"type": ["string", "null"]},
+    "model": {"type": "string", "minLength": 1},
+    "seed": {"type": ["integer", "null"]},
+    "actual_label": {"enum": [0, 1, null]},
+    "p_tb": {"type": "number", "minimum": 0, "maximum": 1},
+    "predicted_label": {"enum": [0, 1]},
+    "threshold": {"type": "number", "minimum": 0, "maximum": 1},
+    "uncertainty": {"type": ["number", "null"], "minimum": 0},
+    "alpha_negative": {"type": ["number", "null"], "minimum": 1},
+    "alpha_positive": {"type": ["number", "null"], "minimum": 1},
+    "checkpoint_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": true
+}

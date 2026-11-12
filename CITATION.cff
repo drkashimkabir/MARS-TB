@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated manuscript once published. This repository is a manuscript-derived reference implementation, not the authors' original code."
+title: "MARS-TB: manuscript-derived reference implementation"
+type: software
+version: 0.1.0
+abstract: "Reference implementation, tests and reporting material for 'Multi-Scale Vision-Language and Anatomical Graph Reasoning for Tuberculosis Detection from Chest Radiographs' (under review). Includes no trained weights and does not reproduce the manuscript's reported results."
+authors:
+  - family-names: "Manik"
+    given-names: "Mia Md Tofayel Gonee"
+  - family-names: "Schwartz"
+    given-names: "Jessica"
+  - family-names: "Islam"
+    given-names: "Md Shafiqul"
+  - family-names: "Chy"
+    given-names: "Md Asikur Rahman"
+  - family-names: "Adnan"
+    given-names: "Muhammad"
+  - family-names: "Moniruzzaman"
+    given-names: "Mohammad"
+  - family-names: "Tanni"
+    given-names: "Zerin Akter"
+  - family-names: "Kabir"
+    given-names: "Kashim"
+repository-code: "https://github.com/drkashimkabir/MARS-TB"
+keywords:
+  - tuberculosis
+  - chest radiography
+  - medical image classification
+  - evidential deep learning

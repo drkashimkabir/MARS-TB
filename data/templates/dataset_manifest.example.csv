@@ -1,0 +1,3 @@
+dataset,split,image_id,path,patient_id,label_binary,diagnostic_category,pattern_label,severity_label,label_provenance,site,source,device,sha256
+tbx11k,,example_h0001,imgs/example_h0001.png,,0,healthy,,,filename_prefix,,,,
+tbx11k,,example_tb0001,imgs/example_tb0001.png,,1,active_tb,,,dataset_annotation_csv,,,,

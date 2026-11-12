@@ -1,0 +1,57 @@
+# Computational lung-zone graph for AGRN.
+#
+# PROVENANCE WARNING. The manuscript gives the node names (Supplementary Table S2) and a
+# schematic (Figure 4) but NOT the original patch-to-zone boundaries or a complete edge list.
+#   * node boxes   : implementation PROPOSAL (normalised image coordinates), not recovered.
+#   * edges        : each carries a `provenance` tag.
+#       figure4_interpreted = depicted in Figure 4 (solid / double / dotted line), expanded where
+#                             Figure 4 merges two nodes into one box (N4-N5, N10-N11).
+#       proposal            = added by this implementation; not in the manuscript.
+#   * self loops   : proposal (standard in GAT; manuscript silent).
+#   * directedness : edges are stored once and treated as UNDIRECTED (both directions added).
+#   * laterality   : "figure" = nodes N0-N5 occupy the image-LEFT half, as drawn in Figure 4.
+#                    In a conventional PA radiograph the patient's left lung is on the image
+#                    RIGHT, so the manuscript's "Left lung" label may refer to the image side.
+#                    Unverified; flip with `laterality: patient`.
+# Using these values does not reproduce the original trained model.
+
+laterality: figure
+self_loops: true
+directed: false
+relations: [adjacency, hematogenous, lymphatic]
+
+# y: top->bottom, x: left->right, all in [0, 1) of the image. Boxes must not overlap.
+nodes:
+  - {id: 0,  name: N0,  side: left,  zone: upper_1, box: [0.10, 0.35, 0.08, 0.1933]}
+  - {id: 1,  name: N1,  side: left,  zone: upper_2, box: [0.10, 0.35, 0.1933, 0.3067]}
+  - {id: 2,  name: N2,  side: left,  zone: upper_3, box: [0.10, 0.35, 0.3067, 0.42]}
+  - {id: 3,  name: N3,  side: left,  zone: middle,  box: [0.35, 0.60, 0.08, 0.42]}
+  - {id: 4,  name: N4,  side: left,  zone: lower_1, box: [0.60, 0.90, 0.08, 0.25]}
+  - {id: 5,  name: N5,  side: left,  zone: lower_2, box: [0.60, 0.90, 0.25, 0.42]}
+  - {id: 6,  name: N6,  side: right, zone: upper_1, box: [0.10, 0.35, 0.58, 0.6933]}
+  - {id: 7,  name: N7,  side: right, zone: upper_2, box: [0.10, 0.35, 0.6933, 0.8067]}
+  - {id: 8,  name: N8,  side: right, zone: upper_3, box: [0.10, 0.35, 0.8067, 0.92]}
+  - {id: 9,  name: N9,  side: right, zone: middle,  box: [0.35, 0.60, 0.58, 0.92]}
+  - {id: 10, name: N10, side: right, zone: lower_1, box: [0.60, 0.90, 0.58, 0.75]}
+  - {id: 11, name: N11, side: right, zone: lower_2, box: [0.60, 0.90, 0.75, 0.92]}
+
+edges:
+  # Figure 4 solid lines: vertical chain N0-N1-N2-N3-(N4,N5) in each lung.
+  - {src: 0, dst: 1,  relation: adjacency, provenance: figure4_interpreted}
+  - {src: 1, dst: 2,  relation: adjacency, provenance: figure4_interpreted}
+  - {src: 2, dst: 3,  relation: adjacency, provenance: figure4_interpreted}
+  - {src: 3, dst: 4,  relation: adjacency, provenance: figure4_interpreted}
+  - {src: 3, dst: 5,  relation: adjacency, provenance: figure4_interpreted}
+  - {src: 6, dst: 7,  relation: adjacency, provenance: figure4_interpreted}
+  - {src: 7, dst: 8,  relation: adjacency, provenance: figure4_interpreted}
+  - {src: 8, dst: 9,  relation: adjacency, provenance: figure4_interpreted}
+  - {src: 9, dst: 10, relation: adjacency, provenance: figure4_interpreted}
+  - {src: 9, dst: 11, relation: adjacency, provenance: figure4_interpreted}
+  # Figure 4 double line: N0 <-> N6 (hematogenous spread).
+  - {src: 0, dst: 6,  relation: hematogenous, provenance: figure4_interpreted}
+  # Figure 4 dotted line: (N4,N5) <-> (N10,N11) (lymphatic spread), expanded pairwise.
+  - {src: 4, dst: 10, relation: lymphatic, provenance: figure4_interpreted}
+  - {src: 5, dst: 11, relation: lymphatic, provenance: figure4_interpreted}
+  # Implementation additions (not in the manuscript): the two lower nodes of a lung touch.
+  - {src: 4, dst: 5,  relation: adjacency, provenance: proposal}
+  - {src: 10, dst: 11, relation: adjacency, provenance: proposal}

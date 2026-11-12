@@ -1,0 +1,113 @@
+{
+  "_provenance": "Hand transcription of numbers printed in 'TB Paper_finial-1_up5.pdf' and 'Supplementary Table S8.pdf' (the supplementary PDF's pages are labelled Table 1, S2-S8). These are MANUSCRIPT-REPORTED values, not measurements. Transcription errors are possible; tests/test_audit_manuscript.py re-checks the internal sums that would expose most of them.",
+  "table1": {
+    "rows": [
+      {"dataset": "TBX11K", "partition": "Training", "images": 6714, "pos": 714, "neg": 6000, "pos_pct": 10.63},
+      {"dataset": "TBX11K", "partition": "Validation", "images": 2238, "pos": 238, "neg": 2000, "pos_pct": 10.63},
+      {"dataset": "TBX11K", "partition": "Internal test", "images": 2238, "pos": 238, "neg": 2000, "pos_pct": 10.63},
+      {"dataset": "PadChest-TB", "partition": "External", "images": 3000, "pos": 891, "neg": 2109, "pos_pct": 29.70},
+      {"dataset": "TB Portals", "partition": "External", "images": 2800, "pos": 1847, "neg": 953, "pos_pct": 65.96}
+    ],
+    "total": {"images": 16990, "pos": 3928, "neg": 13062, "pos_pct": 23.12}
+  },
+  "tbx11k_composition": {"analysed": 11190, "excluded_uncertain": 10, "active": 924, "latent": 212, "both": 54, "positives": 1190, "healthy": 5000, "sick_non_tb": 5000, "original_total": 11200},
+  "text_counts": {"internal_test_n_section_3_1": 2221, "internal_test_pos_section_3_1": 404, "internal_test_neg_section_3_1": 1817, "training_images_section_3_2": 6662, "sampler_weight_reported": 4.5, "sampler_weight_formula": [9085, 2019]},
+  "table4_internal": [
+    {"model": "ResNet-50", "auc": 0.876, "auc_ci": [0.861, 0.891], "se": 76.7, "se_ci": [72.5, 80.9], "sp": 86.1, "sp_ci": [84.6, 87.6], "mcc": 0.557},
+    {"model": "DenseNet-121", "auc": 0.901, "auc_ci": [0.888, 0.914], "se": 79.2, "se_ci": [75.2, 83.2], "sp": 88.3, "sp_ci": [86.9, 89.7], "mcc": 0.610},
+    {"model": "EfficientNet-B4", "auc": 0.921, "auc_ci": [0.909, 0.933], "se": 81.4, "se_ci": [77.6, 85.2], "sp": 90.1, "sp_ci": [88.8, 91.4], "mcc": 0.656},
+    {"model": "CheXNet", "auc": 0.931, "auc_ci": [0.919, 0.943], "se": 82.7, "se_ci": [79.0, 86.4], "sp": 91.0, "sp_ci": [89.8, 92.2], "mcc": 0.682},
+    {"model": "ViT-B/16", "auc": 0.934, "auc_ci": [0.922, 0.946], "se": 83.4, "se_ci": [79.7, 87.1], "sp": 91.6, "sp_ci": [90.4, 92.8], "mcc": 0.698},
+    {"model": "Swin-B", "auc": 0.943, "auc_ci": [0.932, 0.954], "se": 85.1, "se_ci": [81.6, 88.6], "sp": 92.3, "sp_ci": [91.2, 93.4], "mcc": 0.723},
+    {"model": "TBNet", "auc": 0.948, "auc_ci": [0.937, 0.959], "se": 86.4, "se_ci": [83.0, 89.8], "sp": 93.1, "sp_ci": [92.0, 94.2], "mcc": 0.748},
+    {"model": "BioViL-T (+full FT)", "auc": 0.953, "auc_ci": [0.943, 0.963], "se": 87.6, "se_ci": [84.4, 90.8], "sp": 93.8, "sp_ci": [92.8, 94.8], "mcc": 0.771},
+    {"model": "BioViL-T (+LoRA)", "auc": 0.961, "auc_ci": [0.951, 0.971], "se": 89.1, "se_ci": [86.1, 92.1], "sp": 94.6, "sp_ci": [93.7, 95.5], "mcc": 0.798},
+    {"model": "MARS-TB", "auc": 0.971, "auc_ci": [0.963, 0.979], "se": 91.2, "se_ci": [88.5, 93.9], "sp": 95.7, "sp_ci": [94.9, 96.5], "mcc": 0.836}
+  ],
+  "table5_external": {
+    "padchest": {"n_pos": 891, "n_neg": 2109, "rows": [
+      {"model": "ResNet-50", "auc": 0.834, "auc_ci": [0.821, 0.847], "se": 74.6, "sp": 83.2},
+      {"model": "DenseNet-121", "auc": 0.856, "auc_ci": [0.844, 0.868], "se": 77.3, "sp": 85.4},
+      {"model": "CheXNet", "auc": 0.869, "auc_ci": [0.857, 0.881], "se": 78.8, "sp": 86.3},
+      {"model": "ViT-B/16", "auc": 0.876, "auc_ci": [0.864, 0.888], "se": 80.1, "sp": 86.9},
+      {"model": "Swin-B", "auc": 0.889, "auc_ci": [0.877, 0.901], "se": 81.9, "sp": 88.1},
+      {"model": "BioViL-T (+LoRA)", "auc": 0.903, "auc_ci": [0.892, 0.914], "se": 84.3, "sp": 89.2},
+      {"model": "MARS-TB", "auc": 0.924, "auc_ci": [0.913, 0.935], "se": 87.3, "sp": 90.8}
+    ]},
+    "tbportals": {"n_pos": 1847, "n_neg": 953, "rows": [
+      {"model": "ResNet-50", "auc": 0.871, "auc_ci": [0.856, 0.886], "se": 79.8, "sp": 80.1},
+      {"model": "DenseNet-121", "auc": 0.891, "auc_ci": [0.877, 0.905], "se": 81.7, "sp": 82.6},
+      {"model": "CheXNet", "auc": 0.903, "auc_ci": [0.890, 0.916], "se": 83.2, "sp": 83.9},
+      {"model": "ViT-B/16", "auc": 0.911, "auc_ci": [0.898, 0.924], "se": 84.6, "sp": 84.7},
+      {"model": "Swin-B", "auc": 0.921, "auc_ci": [0.909, 0.933], "se": 86.1, "sp": 86.4},
+      {"model": "BioViL-T (+LoRA)", "auc": 0.939, "auc_ci": [0.928, 0.950], "se": 89.6, "sp": 89.8},
+      {"model": "MARS-TB", "auc": 0.956, "auc_ci": [0.947, 0.965], "se": 92.1, "sp": 91.4}
+    ]}
+  },
+  "table6_ablation": [
+    {"id": "A1", "config": "ResNet-50 baseline", "mean": 0.862, "sd": 0.008, "ci": [0.8521, 0.8719], "delta": -0.109},
+    {"id": "A2", "config": "BioViL-T pretraining configuration", "mean": 0.891, "sd": 0.007, "ci": [0.8823, 0.8997], "delta": -0.080},
+    {"id": "A3", "config": "A2 with LoRA r16 a32", "mean": 0.913, "sd": 0.006, "ci": [0.9056, 0.9204], "delta": -0.058},
+    {"id": "A4", "config": "A3 with DDFM", "mean": 0.934, "sd": 0.005, "ci": [0.9278, 0.9402], "delta": -0.037},
+    {"id": "A5", "config": "A4 with AGRN", "mean": 0.948, "sd": 0.005, "ci": [0.9418, 0.9542], "delta": -0.023},
+    {"id": "A6", "config": "A5 with PRM", "mean": 0.958, "sd": 0.004, "ci": [0.9530, 0.9630], "delta": -0.013},
+    {"id": "Full", "config": "A6 with MT-EDL", "mean": 0.971, "sd": 0.004, "ci": [0.9660, 0.9760], "delta": 0.0},
+    {"id": "A6a", "config": "without DDFM", "mean": 0.951, "sd": 0.005, "ci": [0.9448, 0.9572], "delta": -0.020},
+    {"id": "A6b", "config": "without AGRN", "mean": 0.956, "sd": 0.004, "ci": [0.9510, 0.9610], "delta": -0.015},
+    {"id": "A6c", "config": "without PRM", "mean": 0.961, "sd": 0.004, "ci": [0.9560, 0.9660], "delta": -0.010},
+    {"id": "A6d", "config": "MT-EDL replaced with cross-entropy", "mean": 0.963, "sd": 0.004, "ci": [0.9580, 0.9680], "delta": -0.008},
+    {"id": "A6e", "config": "LoRA replaced with full fine-tuning", "mean": 0.953, "sd": 0.006, "ci": [0.9456, 0.9604], "delta": -0.018}
+  ],
+  "table7_efficiency": [
+    {"model": "ResNet-50", "trainable_M": 25.6, "total_M": 25.6, "flops_G": 21.4, "ms": 18, "auc": 0.876},
+    {"model": "DenseNet-121", "trainable_M": 7.98, "total_M": 7.98, "flops_G": 14.9, "ms": 15, "auc": 0.901},
+    {"model": "EfficientNet-B4", "trainable_M": 19.3, "total_M": 19.3, "flops_G": 17.3, "ms": 21, "auc": 0.921},
+    {"model": "CheXNet", "trainable_M": 7.98, "total_M": 7.98, "flops_G": 14.9, "ms": 16, "auc": 0.931},
+    {"model": "ViT-B/16", "trainable_M": 86.6, "total_M": 86.6, "flops_G": 91.5, "ms": 89, "auc": 0.934},
+    {"model": "Swin-B", "trainable_M": 87.8, "total_M": 87.8, "flops_G": 80.2, "ms": 84, "auc": 0.943},
+    {"model": "BioViL-T (+LoRA)", "trainable_M": 0.59, "total_M": 86.0, "flops_G": 93.1, "ms": 94, "auc": 0.961},
+    {"model": "MARS-TB", "trainable_M": 18.3, "total_M": 104.6, "flops_G": 116.3, "ms": 167, "auc": 0.971}
+  ],
+  "table7_text_claims": {"param_increase_pct": 21.6, "flops_increase_pct": 24.9, "latency_increase_pct": 77.7},
+  "table8_seeds": {
+    "seeds": [42, 0, 1, 2, 3],
+    "rows": [
+      {"model": "MARS-TB", "values": [0.9710, 0.9659, 0.9685, 0.9735, 0.9761], "mean": 0.971, "sd": 0.004, "ci": [0.9660, 0.9760]},
+      {"model": "BioViL-T + LoRA", "values": [0.9610, 0.9559, 0.9585, 0.9635, 0.9661], "mean": 0.961, "sd": 0.004, "ci": [0.9560, 0.9660]},
+      {"model": "TBNet", "values": [0.9480, 0.9417, 0.9448, 0.9512, 0.9543], "mean": 0.948, "sd": 0.005, "ci": [0.9418, 0.9542]},
+      {"model": "MARS-TB without DDFM", "values": [0.9510, 0.9447, 0.9478, 0.9542, 0.9573], "mean": 0.951, "sd": 0.005, "ci": [0.9448, 0.9572]},
+      {"model": "MARS-TB without AGRN", "values": [0.9560, 0.9509, 0.9535, 0.9585, 0.9611], "mean": 0.956, "sd": 0.004, "ci": [0.9510, 0.9610]},
+      {"model": "MARS-TB without PRM", "values": [0.9610, 0.9559, 0.9585, 0.9635, 0.9661], "mean": 0.961, "sd": 0.004, "ci": [0.9560, 0.9660]},
+      {"model": "MT-EDL replaced with cross-entropy", "values": [0.9630, 0.9579, 0.9605, 0.9655, 0.9681], "mean": 0.963, "sd": 0.004, "ci": [0.9580, 0.9680]},
+      {"model": "LoRA replaced with full fine-tuning", "values": [0.9530, 0.9454, 0.9492, 0.9568, 0.9606], "mean": 0.953, "sd": 0.006, "ci": [0.9455, 0.9605]}
+    ]
+  },
+  "supp_s1_parameters": {
+    "frozen_backbone": 86312448,
+    "components": {
+      "lora": 589824, "msvle_text_guidance": 1179648, "msvle_cross_scale_attention": 786432, "msvle_scale_fusion": 1771008,
+      "ddfm_freq_band_cnn": 1315584, "ddfm_freq_projection": 591360, "ddfm_cross_attention": 262144,
+      "agrn_gat": 2362368, "agrn_readout": 7080192, "agrn_node_classifier": 769, "prm": 2374656, "mt_edl": 7690
+    },
+    "reported_total_trainable": "~18.3M", "reported_total": "~104.6M"
+  },
+  "supp_s3_s5": {
+    "s3": {"padchest": {"patients": 2850, "mean_per_patient": 1.05}, "tbportals": {"patients": 1950, "mean_per_patient": 1.44}},
+    "s4": {"padchest": {"pos_patients": 850, "neg_patients": 2000, "pos_extra": 41, "neg_extra": 109, "extra": 150},
+           "tbportals": {"pos_patients": 1200, "neg_patients": 750, "pos_extra": 647, "neg_extra": 203, "extra": 850}, "patient_sum": 4800},
+    "s5": {"pos": 2738, "neg": 3062, "total": 5800, "pos_pct": 47.21, "neg_pct": 52.79}
+  },
+  "supp_s6": [
+    {"image": "tb0004.png", "label": 1, "p": 0.924, "u": 0.080, "alpha_neg": 1.900, "alpha_pos": 23.100},
+    {"image": "tb0006.png", "label": 1, "p": 0.886, "u": 0.100, "alpha_neg": 2.280, "alpha_pos": 17.720},
+    {"image": "tb0009.png", "label": 1, "p": 0.953, "u": 0.060, "alpha_neg": 1.567, "alpha_pos": 31.767},
+    {"image": "tb0003.png", "label": 1, "p": 0.742, "u": 0.160, "alpha_neg": 3.225, "alpha_pos": 9.275},
+    {"image": "tb0135.png", "label": 1, "p": 0.817, "u": 0.120, "alpha_neg": 3.050, "alpha_pos": 13.617},
+    {"image": "h0004.png", "label": 0, "p": 0.064, "u": 0.080, "alpha_neg": 23.400, "alpha_pos": 1.600},
+    {"image": "h0006.png", "label": 0, "p": 0.112, "u": 0.100, "alpha_neg": 17.760, "alpha_pos": 2.240},
+    {"image": "h0018.png", "label": 0, "p": 0.087, "u": 0.120, "alpha_neg": 15.217, "alpha_pos": 1.450},
+    {"image": "s0008.png", "label": 0, "p": 0.194, "u": 0.160, "alpha_neg": 10.075, "alpha_pos": 2.425},
+    {"image": "s0016.png", "label": 0, "p": 0.286, "u": 0.200, "alpha_neg": 7.140, "alpha_pos": 2.860}
+  ],
+  "supp_s8_holm": {"raw": [0.003, "<0.001", "<0.001"], "adjusted": [0.003, "<0.003", "<0.003"]}
+}

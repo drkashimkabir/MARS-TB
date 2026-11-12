@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MARS-TB split metadata (sidecar of a split CSV)",
+  "type": "object",
+  "required": ["name", "provenance", "seed", "ratios", "counts", "manifest_sha256", "generator"],
+  "properties": {
+    "name": {"type": "string", "minLength": 1},
+    "provenance": {
+      "enum": ["newly_generated", "historical_original"],
+      "description": "historical_original is only accepted when the original authors' file is supplied together with an attestation (see load_historical_split)."
+    },
+    "attestation": {"type": ["string", "null"]},
+    "seed": {"type": ["integer", "null"]},
+    "ratios": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+    "strata_column": {"type": ["string", "null"]},
+    "group_column": {"type": ["string", "null"]},
+    "counts": {"type": "object"},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "generator": {"type": "string"}
+  },
+  "additionalProperties": true
+}

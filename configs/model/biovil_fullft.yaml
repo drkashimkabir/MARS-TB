@@ -1,0 +1,8 @@
+# "BioViL-T (+full FT)" baseline as described in the manuscript: ViT backbone fully fine-tuned,
+# linear heads, none of the MARS-TB modules. Same caveat on the backbone as biovil_lora.yaml.
+backbone: {img_size: 512, pretrained: none, freeze_backbone: false}
+lora: {enabled: false}
+use_ddfm: false
+use_agrn: false
+use_prm: false
+head: {type: softmax_ce}
