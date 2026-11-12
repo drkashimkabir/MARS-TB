@@ -98,17 +98,18 @@ def audit_manifest(
     ph: dict[str, int] = {}
     unreadable: list[str] = []
     for row in manifest.itertuples():
-        path = safe_join(root, row.path)
+        image_id = str(row.image_id)
+        path = safe_join(root, str(row.path))
         try:
-            file_hash[row.image_id] = sha256_file(path)
+            file_hash[image_id] = sha256_file(path)
             u8 = to_uint8(read_image(path))
         except (OSError, ValueError, FileNotFoundError):
-            unreadable.append(row.image_id)
+            unreadable.append(image_id)
             continue
-        pixel_hash[row.image_id] = hashlib.sha256(u8.tobytes() + str(u8.shape).encode()).hexdigest()
+        pixel_hash[image_id] = hashlib.sha256(u8.tobytes() + str(u8.shape).encode()).hexdigest()
         if compute_perceptual:
-            dh[row.image_id] = dhash(u8)
-            ph[row.image_id] = phash(u8)
+            dh[image_id] = dhash(u8)
+            ph[image_id] = phash(u8)
 
     def crossing(ids: list[str]) -> bool:
         return len({split_of[i] for i in ids}) > 1

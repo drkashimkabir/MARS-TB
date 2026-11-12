@@ -227,7 +227,7 @@ def verify_split(
         from mars_tb.utils.io import safe_join
 
         for row in df.itertuples():
-            p = safe_join(root, row.path)
+            p = safe_join(root, str(row.path))
             if not p.is_file():
                 rep.errors.append(f"missing file: {row.path}")
                 break
