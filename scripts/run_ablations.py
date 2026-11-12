@@ -9,7 +9,7 @@ Aggregation over seeds (mean/SD/t-CI) is done by reproduce_tables.py from the pr
 from __future__ import annotations
 
 import argparse
-import subprocess
+import subprocess  # nosec B404
 import sys
 from pathlib import Path
 
@@ -77,7 +77,7 @@ def main(argv: list[str] | None = None) -> int:
             ]
             for cmd in (train, export):
                 print(" ".join(cmd))
-                if not args.dry_run and subprocess.run(cmd, check=False).returncode != 0:  # noqa: S603
+                if not args.dry_run and subprocess.run(cmd, check=False).returncode != 0:  # noqa: S603  # nosec B603
                     print(f"FAILED: {name} seed {seed}", file=sys.stderr)
                     return 1
     return 0

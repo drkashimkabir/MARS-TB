@@ -5,7 +5,7 @@ from __future__ import annotations
 import importlib.metadata
 import platform
 import shutil
-import subprocess
+import subprocess  # nosec B404
 import sys
 from pathlib import Path
 from typing import Any
@@ -36,7 +36,7 @@ def git_commit(repo: str | Path | None = None) -> str | None:
     if exe is None:
         return None
     try:
-        out = subprocess.run(  # noqa: S603
+        out = subprocess.run(  # noqa: S603  # nosec B603
             [exe, "rev-parse", "HEAD"], cwd=repo, capture_output=True, text=True, timeout=10, check=True
         )
         return out.stdout.strip() or None
@@ -49,7 +49,7 @@ def git_is_dirty(repo: str | Path | None = None) -> bool | None:
     if exe is None:
         return None
     try:
-        out = subprocess.run(  # noqa: S603
+        out = subprocess.run(  # noqa: S603  # nosec B603
             [exe, "status", "--porcelain"], cwd=repo, capture_output=True, text=True, timeout=10, check=True
         )
         return bool(out.stdout.strip())

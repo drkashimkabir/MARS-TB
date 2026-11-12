@@ -89,7 +89,8 @@ class PromptBank(nn.Module):
         if cfg.source == "learned":
             self.embeddings = nn.ParameterList(nn.Parameter(torch.randn(c, dim) * 0.02) for c in counts)
         else:
-            assert cfg.path is not None
+            if cfg.path is None:
+                raise ValueError("text.source='file' requires text.path")
             blob = torch.load(cfg.path, map_location="cpu", weights_only=True)
             tensors = []
             for key, c in zip(SCALE_KEYS, counts, strict=True):
